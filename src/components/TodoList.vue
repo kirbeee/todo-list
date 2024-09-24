@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="task in getTasks" :key="task">
-      {{ task }}
+      <Task :taskText="task" />
     </li>
   </ul>
 </template>
@@ -9,8 +9,12 @@
 <script lang="ts">
 import { useTaskStore } from "@/stores/task";
 import { ref } from "vue";
+import Task from "./Task.vue";
 
 export default {
+  components: {
+    Task
+  },
   setup() {
     const taskStore = useTaskStore();
     const newTask = ref("");
